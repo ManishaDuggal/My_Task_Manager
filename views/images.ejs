@@ -1,0 +1,86 @@
+<html>
+<head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+        
+  <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+  <link rel="stylesheet" type="text/css" href="/css/loginstyle.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+        
+        .column {
+          float: left;
+          width: 33.33%;
+          padding: 5px;
+        }
+        
+        /* Clearfix (clear floats) */
+        .row::after {
+          content: "";
+          clear: both;
+          display: table;
+        }
+        </style>
+
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-dark navbar-fixed-top">
+    <a class="navbar-brand" href="#">Navbar</a>
+  </nav>
+  
+  <div class="sidenav" >
+    <a href="/profile/">Profile</a>
+    <a href="/label/">Labels</a>
+    <a href="/task/">Task</a>
+    <a href="/profile/images/">MyImages</a>
+    <a href="/changepassword/">Password</a>
+    <a href="/auth/logout/">Logout</a>
+  </div>
+
+
+<div style="margin-left:5cm;margin-top: 3cm">
+<%if(locals.result&&locals.result.allImages){%>
+  <div class="row" ></div>
+  <% locals.result.allImages.forEach(function(image){ %>
+    <% var x="/uploads/"+image%>
+      <div class="column">
+          <img src="<%=x%>" alt="Mountains" style="height:30%;width:40%">
+          <a class="btn btn-info" onclick="getConfirmation('<%=image%>')"  role="button">Apply This Again</a>
+      </div>
+    <%})%>
+  </div>
+<%}else{%>
+  <div class="alert alert-info" role="alert">
+   No Images yet
+  </div>
+<%}%>
+</div>
+        
+  <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+  <script>
+  function getConfirmation(str) {
+               var retVal = window.confirm("Do you want to set this as your profile picture ?");
+               if( retVal == true ) {
+                window.location.href = "/profile/changeimage/"+str;
+                  return true;
+               } else {
+                
+               }
+            }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+  
+</body>
+</html>

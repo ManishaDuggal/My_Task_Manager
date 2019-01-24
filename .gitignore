@@ -1,0 +1,4 @@
+/node_modules
+/config/keys.js
+/test.js
+/public/uploads/*.png

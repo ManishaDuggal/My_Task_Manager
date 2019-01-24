@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/css/loginstyle.css">
+
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Navbar</a>
+  </nav>
+  <div class="sidenav" >
+    <a href="/profile/">Profile</a>
+    <a href="/label/">Labels</a>
+    <a href="/task/">Task</a>
+    <a href="/profile/images/">MyImages</a>
+    <a href="/changepassword/">Password</a>
+    <a href="/auth/logout/">Logout</a>
+  </div>
+
+
+  <%if(locals.error){%>
+    <div style="margin-left: 5cm;margin-top:2cm" class="alert alert-danger" role="alert">
+      <%=locals.error%>
+    </div>
+    <%}%>
+  
+<form action="/auth/submitlogin/" method="POST" style="margin-left: 5cm;margin-top:2cm">
+  <div class="form-group" >
+    <label for="exampleInputEmail1">Email address</label>
+    <input required name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input required name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-dark">Login</button>
+  <a class="btn btn-dark" href="/signup/" role="button">SignUp</a>
+</br></br>
+  <a class="google-btn" href="/auth/google" class="btn btn-block btn-social btn-google">
+    <i class="fab fa-google"></i> Sign in with Google
+  </a>
+</form>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html> 
